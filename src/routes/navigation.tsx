@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate, NavLink } from "react-router-dom"
 import logo from '../logo.svg';
+import { PageOneComponent, PageThreeComponent, PageTwoComponent } from "./01-normal-routes/pages";
 export const Navigation = () => {
 
     return (
@@ -21,9 +22,9 @@ export const Navigation = () => {
                     </ul>
                 </nav>
                 <Routes>
-                    <Route path="home" element={<h1>Home</h1>} />
-                    <Route path="users" element={<h1>Users</h1>} />
-                    <Route path="about" element={<h1>About</h1>} />
+                    <Route path="home" element={<PageOneComponent/>} />
+                    <Route path="users" element={<PageTwoComponent/>} />
+                    <Route path="about" element={<PageThreeComponent/>} />
                     <Route path="/*" element={<Navigate to="home" />} />
                 </Routes>
             </div>
