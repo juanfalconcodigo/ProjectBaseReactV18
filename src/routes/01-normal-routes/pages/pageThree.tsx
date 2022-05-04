@@ -5,3 +5,5 @@ export function PageThreeComponent() {
         </>
     )
 }
+
+export default PageThreeComponent;

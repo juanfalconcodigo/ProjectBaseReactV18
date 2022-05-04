@@ -1,4 +1,3 @@
-
 export function PageOneComponent() {
     return (
         <>
@@ -6,3 +5,5 @@ export function PageOneComponent() {
         </>
     )
 }
+
+export default PageOneComponent;

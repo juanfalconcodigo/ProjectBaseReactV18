@@ -5,3 +5,4 @@ export function PageTwoComponent() {
         </>
     )
 }
+export default PageTwoComponent;
