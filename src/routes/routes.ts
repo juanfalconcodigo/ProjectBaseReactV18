@@ -1,4 +1,5 @@
 import { lazy, LazyExoticComponent } from "react";
+import ShoppingPages from './02-components-pattern/pages/ShoppingPages';
 
 type JSXComponent = () => JSX.Element;
 interface Route {
@@ -30,5 +31,10 @@ export const routes: Route[] = [
         path: 'lazy3',
         to: '/lazy3',
         Component: LazyThree
+    },{
+        name: 'Shopping',
+        path: 'shopping',
+        to: '/shopping',
+        Component: ShoppingPages
     }
 ]
