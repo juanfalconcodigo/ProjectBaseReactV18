@@ -6,8 +6,8 @@ export const useShoppingCart=()=>{
     const onChangeCounterProduct = ({ count, product }: { count: number, product: Product }) => {
         console.log('Hiii..', count, product, shoppingCart);
 
-            setShopppingCart((state) => {
-              const productInCart=state[product.id] || {...product,count:0};
+            setShopppingCart((oldShoppingCart) => {
+              /* const productInCart=state[product.id] || {...product,count:0};
               console.log('[MAX]',Math.max(productInCart.count+count,0))
               if(Math.max(productInCart.count+count,0)>0){
                   return {
@@ -18,7 +18,16 @@ export const useShoppingCart=()=>{
               const {[productInCart.id]:deleteProduct,...newState}=state;
               return {
                     ...newState
-              }
+              } */
+              if( count === 0 ) {
+                const {  [product.id]: toDelete, ...rest  } = oldShoppingCart;
+                return rest;
+            }
+
+            return {
+                ...oldShoppingCart,
+                [ product.id ]: { ...product, count }
+            }
             });
 
     }
