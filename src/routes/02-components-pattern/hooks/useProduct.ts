@@ -1,24 +1,42 @@
-import { Product,OnChangeArgs  } from '../interfaces/interfaces';
-import { useEffect, useState } from 'react';;
+import { Product, OnChangeArgs, InitialValues } from '../interfaces/interfaces';
+import { useEffect, useRef, useState } from 'react';;
 
 interface PropsProduct {
     product: Product
     onChange?: (args: OnChangeArgs) => void;
-    value?:number;
+    value?: number;
+    initialValues?: InitialValues
 }
-export const useProduct = ({ onChange, product,value=0 }: PropsProduct) => {
-    const [count, setCount] = useState<number>(value);
+export const useProduct = ({ onChange, product, value = 0, initialValues }: PropsProduct) => {
+    const [count, setCount] = useState<number>(initialValues?.count || value);
+    const isMounted = useRef(false);
     const changeCount = (value: number) => {
-        const newValue=Math.max(count + value,0);
+        const newValue = Math.max(count + value, 0);
+        if (initialValues?.maxCount && initialValues.maxCount < count + value) {
+            return;
+        }
         setCount((count) => newValue);
         onChange && onChange({ count: newValue, product });
     }
-    useEffect(()=>{
-        console.log('Entro',value)
+
+    const reset = () => {
+        setCount(initialValues?.count || value);
+    }
+    useEffect(() => {
+        if (!isMounted.current) return;
+        console.log('Entro', value);
         setCount(value);
-    },[value])
+    }, [value]);
+
+    useEffect(() => {
+        isMounted.current = true;
+    }, []);
+
     return {
         count,
-        changeCount
+        changeCount,
+        maxCount: initialValues?.maxCount || null,
+        isCountReaced: !!initialValues?.maxCount && initialValues.maxCount === count,
+        reset
     }
 }

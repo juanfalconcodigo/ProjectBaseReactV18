@@ -7,12 +7,14 @@ export interface Props {
     style?: React.CSSProperties;
 }
 export const ProductButtons = ({ className, style }: Props) => {
-    const { count, changeCount } = useContext(ProductContext);
+    const { count, changeCount,isCountReaced } = useContext(ProductContext);
+    
+
     return (
         <div className={`${styles.buttonsContainer} ${className}`} style={style}>
             <button className={styles.buttonMinus} onClick={() => changeCount(-1)}>-</button>
             <div className={styles.countLabel}>{count}</div>
-            <button className={styles.buttonAdd} onClick={() => changeCount(1)}>+</button>
+            <button className={`${styles.buttonAdd} ${!isCountReaced?'':styles.disabled}`} onClick={() => changeCount(1)}>+</button>
         </div>
     )
 }

@@ -13,6 +13,8 @@ export interface ProductContextProps {
     product: Product,
     count: number;
     changeCount: (value: number) => void;
+    maxCount?: number | null;
+    isCountReaced: boolean;
 }
 
 export interface ProductCardHOCProps {
@@ -22,12 +24,27 @@ export interface ProductCardHOCProps {
     Buttons: ({ className }: ProductButtonsProps) => JSX.Element;
 }
 
-export interface OnChangeArgs{
-    product:Product;
-    count:number;
+export interface OnChangeArgs {
+    product: Product;
+    count: number;
 }
 
 
 export interface ProductInCart extends Product {
     count: number;
+}
+
+export interface InitialValues {
+    count?: number;
+    maxCount?: number;
+}
+
+
+export interface ProductCardHandlers {
+    product: Product,
+    count: number;
+    changeCount: (value: number) => void;
+    maxCount?: number | null;
+    isCountReaced: boolean;
+    reset: () => void;
 }
