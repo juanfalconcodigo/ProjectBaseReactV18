@@ -15,7 +15,8 @@ const RegisterPage = lazy(() => import(/* webpackChunkName:'registerPage' */'../
 const FormikPage = lazy(() => import(/* webpackChunkName:'formikPage' */'../03-forms/pages/formik.page'));
 const FormikComponentPage = lazy(() => import(/* webpackChunkName:'formikPage' */'../03-forms/pages/formik-components.page'));
 const FormikAbstractPage = lazy(() => import(/* webpackChunkName:'formikPage' */'../03-forms/pages/formik-abstract.page'));
-
+const FormikRegisterPage = lazy(() => import(/* webpackChunkName:'formikPage' */'../03-forms/pages/formik-register.page'));
+const FormikDynamicPage = lazy(() => import(/* webpackChunkName:'formikPage' */'../03-forms/pages/formik-dynamic.page'));
 export const routes: Route[] = [
     {
         name: 'Lazy One',
@@ -58,6 +59,18 @@ export const routes: Route[] = [
         path: 'formik-abstract',
         to: '/formik-abstract',
         Component: FormikAbstractPage
+    },
+    {
+        name: 'Formik Register Page',
+        path: 'formik-register',
+        to: '/formik-register',
+        Component: FormikRegisterPage
+    },
+    {
+        name: 'Formik Dynamic Page',
+        path: 'formik-dynamic',
+        to: '/formik-dynamic',
+        Component: FormikDynamicPage
     }
 
 ]

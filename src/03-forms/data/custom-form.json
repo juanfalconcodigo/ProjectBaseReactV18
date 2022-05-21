@@ -1,0 +1,56 @@
+[{
+        "type": "input",
+        "name": "firstName",
+        "placeholder": "Juan",
+        "label": "First Name",
+        "value": "",
+        "validators": [{
+                "type": "required"
+            },
+            {
+                "type": "minLength",
+                "value": "6"
+            }
+        ]
+    },
+    {
+        "type": "input",
+        "name": "lastNaName",
+        "placeholder": "Falcon",
+        "label": "Last Name",
+        "value": ""
+    },
+    {
+        "type": "email",
+        "name": "email",
+        "placeholder": "example@gmail.com",
+        "label": "Email",
+        "value": "",
+        "validators": [{
+                "type": "required"
+            },
+            {
+                "type": "email"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "name": "favoriteGame",
+        "label": "Favorite Game",
+        "value": "",
+        "options": [{
+                "id": 1,
+                "game": "Super Samsh"
+            },
+            {
+                "id": 2,
+                "game": "Metal Gear"
+            },
+            {
+                "id": 3,
+                "game": "Resident Evil"
+            }
+        ]
+    }
+]
